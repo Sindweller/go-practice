@@ -8,8 +8,8 @@ import (
 
 func main() {
 	ch := make(chan int)
-	wgProc := sync.WaitGroup{}
-	wgCons := sync.WaitGroup{}
+	wgProc := &sync.WaitGroup{}
+	wgCons := &sync.WaitGroup{}
 
 	// 生产者5个
 	for i := 0; i < 5; i++ {
@@ -33,7 +33,7 @@ func main() {
 }
 
 // 生产者
-func producer(ch chan int, wg sync.WaitGroup, ii int) {
+func producer(ch chan int, wg *sync.WaitGroup, ii int) {
 	defer fmt.Printf("producer %d quit\n", ii)
 	defer wg.Done()
 
@@ -46,7 +46,7 @@ func producer(ch chan int, wg sync.WaitGroup, ii int) {
 }
 
 // 消费者
-func consumer(ch chan int, wg sync.WaitGroup, ii int) {
+func consumer(ch chan int, wg *sync.WaitGroup, ii int) {
 	defer fmt.Printf("consumer %d quit\n", ii)
 	defer wg.Done()
 	for data := range ch {
