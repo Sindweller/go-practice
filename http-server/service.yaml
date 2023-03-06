@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: httpserver
+  namespace: default
+  labels:
+    app: httpserver
+spec:
+  ports:
+    - name: http-8840
+      protocol: TCP
+      port: 8840
+      targetPort: 8840
+  selector:
+    app: httpserver
+  type: NodePort
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack

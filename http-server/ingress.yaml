@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: httpserver-ingress
+  namespace: default
+  annotations:
+    cert-manager.io/issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: www.sindweller.com
+      http:
+        paths:
+          - pathType: Prefix
+            backend:
+              service:
+                name: httpserver
+                port:
+                  number: 80
+            path: /healthz
+  # This section is only required if TLS is to be enabled for the Ingress
+  tls:
+    - hosts:
+        - www.sindweller.com
+      secretName: sindweller-tls
