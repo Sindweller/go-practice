@@ -41,6 +41,8 @@ k apply -f ingress.yaml
 helm -n prometheus-stack install kube-prometheus-stack prometheus-community/kube-prometheus-stack
 kubectl create secret generic additional-configs --from-file=prom.yaml -n prometheus-stack
 k apply -f prom2.yaml
+k apply -f rbac.yaml
+k apply -f service.yaml
 ```
 
 准备grafana
