@@ -6,6 +6,7 @@ items:
       annotations:
         meta.helm.sh/release-name: kube-prometheus-stack
         meta.helm.sh/release-namespace: prometheus-stack
+      creationTimestamp: "2023-03-09T09:41:10Z"
       generation: 1
       labels:
         app: kube-prometheus-stack-prometheus
@@ -18,8 +19,8 @@ items:
         release: kube-prometheus-stack
       name: kube-prometheus-stack-prometheus
       namespace: prometheus-stack
-      resourceVersion: "13002"
-      uid: 27e9e0bd-96e8-490f-9171-4c19b72d461b
+      resourceVersion: "19876"
+      uid: 2f12bd4f-6663-4bae-a27a-8f0985b19960
     spec:
       additionalScrapeConfigs:
         key: prom.yaml
@@ -70,6 +71,27 @@ items:
       shards: 1
       version: v2.42.0
       walCompression: true
+    status:
+      availableReplicas: 1
+      conditions:
+        - lastTransitionTime: "2023-03-09T09:41:38Z"
+          observedGeneration: 1
+          status: "True"
+          type: Available
+        - lastTransitionTime: "2023-03-09T09:41:18Z"
+          observedGeneration: 1
+          status: "True"
+          type: Reconciled
+      paused: false
+      replicas: 1
+      shardStatuses:
+        - availableReplicas: 1
+          replicas: 1
+          shardID: "0"
+          unavailableReplicas: 0
+          updatedReplicas: 1
+      unavailableReplicas: 0
+      updatedReplicas: 1
 kind: List
 metadata:
   resourceVersion: ""
