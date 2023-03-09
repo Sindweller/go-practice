@@ -35,8 +35,15 @@ k apply -f deployment.yaml
 k apply -f service.yaml
 k apply -f ingress.yaml 
 ```
-
 准备prom
+
+```shell
+helm -n prometheus-stack install kube-prometheus-stack prometheus-community/kube-prometheus-stack
+kubectl create secret generic additional-configs --from-file=prom.yaml -n prometheus-stack
+k apply -f prom2.yaml
+```
+
+准备grafana
 
 ```shell
 helm upgrade --install loki grafana/loki-stack --set grafana.enabled=true,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false

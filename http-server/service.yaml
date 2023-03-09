@@ -7,15 +7,9 @@ metadata:
     app: httpserver
 spec:
   ports:
-    - name: http-8840
-      protocol: TCP
+    - protocol: TCP
       port: 8840
       targetPort: 8840
   selector:
     app: httpserver
-  type: LoadBalancer
-  sessionAffinity: None
-  externalTrafficPolicy: Cluster
-  ipFamilies:
-    - IPv4
-  ipFamilyPolicy: SingleStack
+  type: ClusterIP

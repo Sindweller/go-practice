@@ -33,22 +33,6 @@ spec:
             requests:
               cpu: 210m
               memory: 180Mi
-          readinessProbe:
-            failureThreshold: 3
-            httpGet:
-              path: /healthz
-              port: 8840
-              scheme: HTTP
-            initialDelaySeconds: 3
-            periodSeconds: 5
-            successThreshold: 1
-            timeoutSeconds: 15
-          startupProbe:
-            httpGet:
-              path: /
-              port: 8840
-            failureThreshold: 30
-            periodSeconds: 10
           lifecycle:
             postStart:
               exec:
