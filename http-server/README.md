@@ -96,3 +96,6 @@ default_execution_latency_seconds_count{step="total"} 1
 
 ![服务发现](assets/服务发现.jpg)
 
+然后可以看数据图
+
+![图](assets/graph.jpg)
