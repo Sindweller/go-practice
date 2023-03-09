@@ -92,4 +92,7 @@ default_execution_latency_seconds_bucket{step="total",le="+Inf"} 1
 default_execution_latency_seconds_sum{step="total"} 18.000442819
 default_execution_latency_seconds_count{step="total"} 1
 ```
+在这里有服务发现：
+
+![服务发现](assets/服务发现.jpg)
 
