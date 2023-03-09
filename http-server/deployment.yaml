@@ -1,6 +1,9 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "8840"
   name: httpserver
   namespace: default
   labels:
@@ -17,7 +20,7 @@ spec:
     spec:
       containers:
         - name: httpserver
-          image: sindweller/httpserver2
+          image: sindweller/httpserver:v3.0.0
           env:
             - name: ENV_TYPE
               value: prod

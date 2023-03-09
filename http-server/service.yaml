@@ -13,7 +13,7 @@ spec:
       targetPort: 8840
   selector:
     app: httpserver
-  type: NodePort
+  type: LoadBalancer
   sessionAffinity: None
   externalTrafficPolicy: Cluster
   ipFamilies:
