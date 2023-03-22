@@ -8,37 +8,34 @@ func main() {
 	quickSort(arr, 0, len(arr)-1)
 	fmt.Println(arr)
 }
-func quickSort(arr []int, left, right int) {
-	if left < right {
-		// 确定p的位置
-		p := partition(arr, left, right)
-		// 左右子数组划分
-		quickSort(arr, left, p-1)
-		quickSort(arr, p+1, right)
+
+func quickSort(arr []int, low, high int) {
+	if low < high {
+		p := partition(arr, low, high) // 找到枢轴的位置
+		// 左右两个子数组继续划分
+		quickSort(arr, low, p-1)
+		quickSort(arr, p+1, high)
 	}
 }
 
-func partition(arr []int, left, right int) int {
-	pivot := arr[right]
-	fmt.Println(pivot)
-	// 需要交替移动
-	for left < right {
-		// 不需要交换
-		for left < right && arr[left] <= pivot {
-			left++
+func partition(arr []int, low, high int) int {
+	// 获取一个枢纽值
+	pivot := arr[high]
+	// 先从左边找出第一个比p大的
+	for low < high {
+		for low < high && arr[low] <= pivot {
+			low++
 		}
-		// 这里left> right的值了
-		// 交换
-		arr[right] = arr[left]
-		// 该从右往左找了
-		for left < right && arr[right] >= pivot {
-			right--
+		// 此时low比pivot大
+		arr[high] = arr[low]
+		// 继续移动high
+		for low < high && arr[high] >= pivot {
+			high--
 		}
-		// 这里right < pivot了 跟left交换
-		arr[left] = arr[right]
+		arr[low] = arr[high]
+		// 继续交替
 	}
-	fmt.Println(arr)
-	// 填充空位
-	arr[right] = pivot
-	return right
+	// 将枢轴值补充回去 此时应当low=high，所以哪个都可以
+	arr[low] = pivot
+	return low
 }
