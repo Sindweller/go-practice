@@ -24,7 +24,8 @@ func heapify(arr []int, n, i int) {
 	if largest != i {
 		// 进行调整
 		arr[i], arr[largest] = arr[largest], arr[i]
-		heapify(arr, n, largest) // 继续往上调整
+		fmt.Printf("largest: %d\n", largest)
+		heapify(arr, n, largest) // 继续往上/下调整 这里应该调整largest还是i? 这里应当是largest
 	}
 }
 
